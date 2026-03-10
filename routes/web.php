@@ -2,9 +2,17 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Models\tickets;
 
 Route::get('/', function () {
-    return view('welcome');
+    $allTickets = tickets::all();
+    return view('welcome', ['tickets' => $allTickets]);
+
+});
+
+Route::get('/ViewTicket', function() {
+    $allTickets = tickets::all();
+    return view('ViewTicket', ['tickets' => $allTickets]);
 });
 
 Route::get('/dashboard', function () {

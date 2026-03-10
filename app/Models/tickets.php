@@ -2,10 +2,19 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class tickets extends Model
+class tickets extends Model // Or 'Ticket'
 {
-    protected $guarded = [];
-    //
+    use HasFactory;
+
+    protected $fillable = [
+        'title',
+        'description',
+        'priority',
+        'status',
+        'user_id',
+        'assigned_to'
+    ];
 }

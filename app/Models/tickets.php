@@ -17,4 +17,17 @@ class tickets extends Model // Or 'Ticket'
         'user_id',
         'assigned_to'
     ];
+
+    // Tells laravel who created the ticket
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    // Tells laravel whos fixin the ticket
+    public function technician()
+    {
+        return $this->belongsTo(User::class, 'assigned_to');
+    }
+
 }

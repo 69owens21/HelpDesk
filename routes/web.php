@@ -22,6 +22,8 @@ Route::middleware('auth')->group(function () {
         return view('welcome', ['tickets' => $tickets]);
     });
 
+
+
     // ==========================================
     // 2. ADMIN ONLY VIEW
     // ==========================================
@@ -32,8 +34,17 @@ Route::middleware('auth')->group(function () {
 
         $allTickets = tickets::all();
         return view('ViewTicket', ['tickets' => $allTickets]);
+
     });
+
+    Route::get('/ticket/{id}', function($id) {
+        $ticket = App\Models\tickets::findOrFail($id);
+
+        return view('ticket-detail', ['ticket' => $ticket]);
+    });
+
 });
+
 
 // ==========================================
 // 3. LARAVEL BREEZE & PROFILE ROUTES
